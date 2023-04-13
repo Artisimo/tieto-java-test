@@ -1,12 +1,16 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <title>Overview</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link rel="stylesheet" th:href="@{/styles/stylesheet.css}"/>
 </head>
 <body>
+<a th:href="@{/login}">Login</a>
 
-<h1>Hello</h1>
+<div sec:authorize="hasRole('ADMIN')">
+    This content is only shown to users.
+</div>
+<h1 th:text = "${books.size()}"></h1>
 </body>
 </html>
