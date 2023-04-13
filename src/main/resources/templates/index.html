@@ -11,6 +11,34 @@
 <div sec:authorize="hasRole('ADMIN')">
     <a th:href="@{/book/create}">Add new</a>
 </div>
-<h1 th:text = "${books.size()}"></h1>
+
+<div class="row" th:each="book : ${books}">
+    <div class="col-md-12">
+        <p th:text="${book.name}"></p>
+    </div>
+</div>
 </body>
+
+<section>
+    <script type="text/javascript">
+        function changePage(nextPage){
+            var parts = window.location.href.split('/');
+            var currentPage = parseInt(parts[3]);
+
+            if(isNaN(currentPage)){
+                alert("Here");
+                currentPage = 1;
+            }else{
+                if(nextPage){
+                    currentPage += 1;
+                }
+                else{
+                    currentPage -= 1;
+                }
+            }
+
+            window.location.replace(parts[0] + "/" + currentPage)
+        }
+    </script>
+</section>
 </html>
