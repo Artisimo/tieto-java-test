@@ -9,7 +9,7 @@
 <a th:href="@{/login}">Login</a>
 
 <div sec:authorize="hasRole('ADMIN')">
-    This content is only shown to users.
+    <a th:href="@{/book/create}">Add new</a>
 </div>
 <h1 th:text = "${books.size()}"></h1>
 </body>
